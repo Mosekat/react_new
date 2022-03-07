@@ -4,7 +4,9 @@ import "./Message.css"
 function Message(props) {
     return (
         <div className='msg'>
-            {props.text}
+           <h2>{props.author}</h2>
+            <h3>{props.text}</h3>
+            <hr/>
         </div>
     );
 }
