@@ -4,7 +4,8 @@ import Button from '@mui/material/Button';//не пригодилась
 import React, {useEffect, useRef, useState} from "react";
 
 
-export const MessageList = () => {
+export const MessageList = (props) => {
+
     const [messageList, setMessageList] = useState([]);
     const [message, setMessage] = useState('');
 
@@ -13,7 +14,7 @@ export const MessageList = () => {
     }
     const addMessage = (msg) => {
         if (msg) {
-            setMessageList([...messageList, {author: 'User', text: msg}])
+            setMessageList([...messageList, {author: 'User', text: msg, chatId: props.chatId}])
             setMessage('');
             ref.current.focus();
         } else {
@@ -27,7 +28,7 @@ export const MessageList = () => {
             const lastMessage = messageList[messageList.length - 1];
             if (lastMessage.author === 'User') {
                 timerId = setTimeout(() => {
-                    setMessageList([...messageList, {author: 'Bot', text: 'hello User'}])
+                    setMessageList([...messageList, {author: 'Bot', text: 'hello User' , chatId: props.chatId}])
                 }, 1500);
                 console.log(timerId)
             }
@@ -37,7 +38,7 @@ export const MessageList = () => {
 
     const HandlePressInput = (event) => {
         if (event.code == "Enter") {
-            setMessageList([...messageList, {author: 'User', text: event.target.value}]);
+            setMessageList([...messageList, {author: 'User', text: event.target.value , chatId: props.chatId}]);
             setMessage('');
             ref.current.focus();
         }
@@ -49,10 +50,12 @@ export const MessageList = () => {
             ref.current.focus();
         }
     }, []);
+
+    console.log(messageList)
     return (
         <div>
             <ul id="chat">
-                {messageList.map((msg, index) => <Message key={index} author={msg.author} text={msg.text}/>)}
+                {messageList.map((msg, index) => msg.chatId === props.chatId?<Message key={index} author={msg.author} text={msg.text}/>:'')}
             </ul>
             <footer>
                 <textarea onChange={writeMessage} onKeyPress={HandlePressInput} ref={ref} type="text" value={message}
