@@ -33,12 +33,21 @@ export const App = () => {
         )
     }, []);
 
+    const deleteChat = (event) => {
+        let chats = arrChats.filter((item) => item.id != event.target.dataset.id);
+        setArrChats(chats);
+    }
+    const addChat = () => {
+        setArrChats([...arrChats, {id: arrChats[arrChats.length - 1].id+1, name: `Chat room ${arrChats[arrChats.length - 1].id+1}`,path:`/room-${arrChats[arrChats.length - 1].id+1}`}]);
+    }
     return (
         <div>
             <Router>
                 <div id="container">
                     <Routes>
-                        <Route path="/" element={<Home profile={profile} arrChats={arrChats}/>}/>
+                        <Route path="/"
+                               element={<Home profile={profile} arrChats={arrChats} deleteChat={deleteChat}
+                                              addChat={addChat}/>}/>
                         <Route path="/profile" element={<About/>}/>
                         <Route path="/room-:id" element={<Home profile={profile} arrChats={arrChats}/>}/>
                         <Route path="*" element={<NotFound/>}/>

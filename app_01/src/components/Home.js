@@ -1,6 +1,7 @@
-import { ChatList} from './chat-list';
+import { ListElements} from './list-menu';
 import { MessageList} from './message-list';
 import {useParams, Link} from "react-router-dom";
+
 
 const Home = (props) => {
     let {id} = useParams();
@@ -25,7 +26,8 @@ const Home = (props) => {
                 <header>
                     <input type="text" placeholder="search"></input>
                 </header>
-                <ChatList arrChats={props.arrChats} profile={props.profile}></ChatList>
+                <ListElements  arrChats={props.arrChats} profile={props.profile} deleteChat={props.deleteChat} addChat={props.addChat}/>
+
             </aside>
             <main>
                 <header>
