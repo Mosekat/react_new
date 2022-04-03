@@ -1,9 +1,9 @@
 import React from 'react';
-import List from '@mui/material/List';
 import ListItem from "@mui/material/ListItem";
 import {Link} from "react-router-dom";
 
 const Profile = (props) => {
+    console.log(props)
     return (
         <div>
             <ListItem>

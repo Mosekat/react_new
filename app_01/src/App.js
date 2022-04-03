@@ -2,9 +2,10 @@ import {useEffect, useState} from 'react';
 import './App.css';
 import {makeStyles, useTheme} from '@mui/styles';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import About from "./components/About";
+import About from './components/About';
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const useStyles = makeStyles((theme) => {
