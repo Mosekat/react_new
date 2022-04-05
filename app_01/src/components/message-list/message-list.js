@@ -1,34 +1,32 @@
 import Message from "./Message";
-import {makeStyles} from '@mui/styles';
-import Button from '@mui/material/Button';//не пригодилась
 import React, {useEffect, useRef, useState} from "react";
-
+import {useSelector, useDispatch} from "react-redux";
 
 export const MessageList = (props) => {
 
-    const [messageList, setMessageList] = useState([]);
     const [message, setMessage] = useState('');
-
+    const messageList = useSelector(state => state.messageList);
+    const dispatch = useDispatch();
     const writeMessage = (event) => {
         setMessage(event.target.value);
     }
     const addMessage = (msg) => {
         if (msg) {
-            setMessageList([...messageList, {author: 'User', text: msg, chatId: props.chatId}])
+            dispatch({type: 'addMessage', message: {author: 'User', text: msg, chatId: props.chatId}});
             setMessage('');
             ref.current.focus();
         } else {
             alert('Enter a message');
         }
     }
-
     useEffect(() => {
         let timerId = null;
         if (messageList.length) {
             const lastMessage = messageList[messageList.length - 1];
             if (lastMessage.author === 'User') {
                 timerId = setTimeout(() => {
-                    setMessageList([...messageList, {author: 'Bot', text: 'hello User' , chatId: props.chatId}])
+                    // setMessageList([...messageList, {author: 'Bot', text: 'hello User', chatId: props.chatId}])
+                    dispatch({type: 'addMessage', message: {author: 'Bot', text: 'hello User', chatId: props.chatId}})
                 }, 1500);
                 console.log(timerId)
             }
@@ -38,7 +36,7 @@ export const MessageList = (props) => {
 
     const HandlePressInput = (event) => {
         if (event.code == "Enter") {
-            setMessageList([...messageList, {author: 'User', text: event.target.value , chatId: props.chatId}]);
+            addMessage(event.target.value)
             setMessage('');
             ref.current.focus();
         }
@@ -55,7 +53,8 @@ export const MessageList = (props) => {
     return (
         <div>
             <ul id="chat">
-                {messageList.map((msg, index) => msg.chatId === props.chatId?<Message key={index} author={msg.author} text={msg.text}/>:'')}
+                {messageList.map((msg, index) => msg.chatId === props.chatId ?
+                    <Message key={index} author={msg.author} text={msg.text}/> : '')}
             </ul>
             <footer>
                 <textarea onChange={writeMessage} onKeyPress={HandlePressInput} ref={ref} type="text" value={message}
