@@ -2,9 +2,10 @@ import React from 'react';
 import ListItem from "@mui/material/ListItem";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {profileSelector} from "../redux/reducers/selectors/selectors";
 
 const Profile = () => {
-    let profile = useSelector(state => state.profile)
+    let profile = useSelector(profileSelector);
     return (
         <div>
             <ListItem>

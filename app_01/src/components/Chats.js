@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import ListItem from "@mui/material/ListItem";
 import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
+import {chatsSelector} from "../redux/reducers/selectors/selectors";
 
 
 const Chats = () => {
-    const chats = useSelector(state =>
-        state.arrayChats
+    const chats = useSelector(chatsSelector
     )
     const dispatch = useDispatch();
 

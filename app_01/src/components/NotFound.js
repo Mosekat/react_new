@@ -1,4 +1,4 @@
-const About = () => {
+const NotFound = () => {
 
     return (
         <main>
@@ -10,4 +10,4 @@ const About = () => {
         </main>
     );
 }
-export default About;
+export default NotFound;

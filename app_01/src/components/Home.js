@@ -1,27 +1,26 @@
-import { ListElements} from './list-menu';
-import { MessageList} from './message-list';
+import {ListElements} from './list-menu';
+import {MessageList} from './message-list';
 import {useParams, Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {chatsSelector} from "../redux/reducers/selectors/selectors";
 
 
 const Home = () => {
-    let chats = useSelector(state =>
-        state.arrayChats
-    )
+    let chats = useSelector(chatsSelector);
 
     let {id} = useParams();
     let arCurrent = [];
-    if(typeof id === 'undefined'){
+    if (typeof id === 'undefined') {
         arCurrent = chats.filter((elem, key) => key === 0);
-    }else{
+    } else {
         arCurrent = chats.filter((elem) => elem.id == id);
     }
 
     let [current] = arCurrent;
 
-    if(!current){
+    if (!current) {
         current = {
-            name:"none",
+            name: "none",
         }
     }
     return (
@@ -30,7 +29,7 @@ const Home = () => {
                 <header>
                     <input type="text" placeholder="search"></input>
                 </header>
-                <ListElements />
+                <ListElements/>
 
             </aside>
             <main>

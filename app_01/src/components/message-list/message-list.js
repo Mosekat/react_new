@@ -1,11 +1,13 @@
 import Message from "./Message";
 import React, {useEffect, useRef, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
+import {messageListSelector} from "../../redux/reducers/selectors/selectors";
+import {getAnswer} from "../../redux/reducers/action";
 
 export const MessageList = (props) => {
 
     const [message, setMessage] = useState('');
-    const messageList = useSelector(state => state.messageList);
+    const messageList = useSelector(messageListSelector);
     const dispatch = useDispatch();
     const writeMessage = (event) => {
         setMessage(event.target.value);
@@ -20,18 +22,8 @@ export const MessageList = (props) => {
         }
     }
     useEffect(() => {
-        let timerId = null;
-        if (messageList.length) {
-            const lastMessage = messageList[messageList.length - 1];
-            if (lastMessage.author === 'User') {
-                timerId = setTimeout(() => {
-                    // setMessageList([...messageList, {author: 'Bot', text: 'hello User', chatId: props.chatId}])
-                    dispatch({type: 'addMessage', message: {author: 'Bot', text: 'hello User', chatId: props.chatId}})
-                }, 1500);
-                console.log(timerId)
-            }
-        }
-        return () => clearInterval(timerId);
+       return dispatch(getAnswer())
+
     }, [messageList])
 
     const HandlePressInput = (event) => {

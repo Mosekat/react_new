@@ -1,13 +1,11 @@
 import {useDispatch} from 'react-redux';
 import {useSelector} from "react-redux";
+import {isActiveSelector} from "../redux/reducers/selectors/selectors";
+import {contactsSelector} from "../redux/reducers/selectors/selectors";
 
 const About = () => {
-    const contacts = useSelector((state) => {
-        return state.contacts
-    });
-    let isActive = useSelector(state => {
-        return state.isActive
-    });
+    const contacts = useSelector(contactsSelector);
+    let isActive = useSelector(isActiveSelector);
     const dispatch = useDispatch();
     return (
         <main>
