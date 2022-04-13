@@ -1,5 +1,4 @@
-import {useDispatch} from 'react-redux';
-import {useSelector} from "react-redux";
+import {useDispatch,useSelector} from 'react-redux';
 import {isActiveSelector} from "../redux/reducers/selectors/selectors";
 import {contactsSelector} from "../redux/reducers/selectors/selectors";
 

@@ -4,7 +4,8 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import About from './components/About';
 import Home from "./components/Home";
-import NotFound from "./components/NotFound";
+import {Comments} from './components/Comments'
+import NotFound from './components/NotFound';
 
 export const App = () => {
 
@@ -18,6 +19,7 @@ export const App = () => {
                         <Route path="/profile" element={<About/>}/>
                         <Route path="/room-:id" element={<Home/>}/>
                         <Route path="*" element={<NotFound/>}/>
+                        <Route path="/comments" element={<Comments/>}/>
                     </Routes>
                 </div>
             </Router>
