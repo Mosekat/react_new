@@ -6,7 +6,6 @@ const initialState = {
 }
 
 export const commentsReducer = (state = initialState, action) => {
-    console.log(action.type)
     switch (action.type) {
         case "loading":
             return {
@@ -21,7 +20,6 @@ export const commentsReducer = (state = initialState, action) => {
                 loading: false,
             }
         case "error":
-            console.log(action)
             return {
                 ...state
                 ,

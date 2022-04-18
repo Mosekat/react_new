@@ -5,7 +5,7 @@ const initialState = {
     switch (action.type) {
         case "addMessage":
             return {
-                ...state, messageList: [...state.messageList, action.message]
+                ...state, messageList: [...state.messageList, action.payload]
             };
 
         default:

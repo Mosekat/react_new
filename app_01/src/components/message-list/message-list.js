@@ -2,7 +2,7 @@ import Message from "./Message";
 import React, {useEffect, useRef, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {messageListSelector} from "../../redux/reducers/selectors/selectors";
-import {getAnswer} from "../../redux/reducers/action";
+import {getAnswer} from "../../redux/reducers/actions";
 
 export const MessageList = (props) => {
 
@@ -14,7 +14,7 @@ export const MessageList = (props) => {
     }
     const addMessage = (msg) => {
         if (msg) {
-            dispatch({type: 'addMessage', message: {author: 'User', text: msg, chatId: props.chatId}});
+            dispatch({type: 'addMessage', payload: {author: 'User', text: msg, chatId: props.chatId}});
             setMessage('');
             ref.current.focus();
         } else {
@@ -40,8 +40,6 @@ export const MessageList = (props) => {
             ref.current.focus();
         }
     }, []);
-
-    console.log(messageList)
     return (
         <div>
             <ul id="chat">
