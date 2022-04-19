@@ -40,7 +40,7 @@ const Chats = () => {
 
                             </div>
                         </Link>
-                        <button onClick={() => deleteChat(chat.id)}>x
+                        <button  onClick={() => deleteChat(chat.id)}>x
                         </button>
                     </ListItem>
                 </div>

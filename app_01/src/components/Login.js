@@ -13,7 +13,7 @@ const Login = () => {
 
     useEffect(()=>{
         if(user){
-            navigate('/welcome')
+            navigate('/home')
         }
     },[user,navigate])
     const handleSubmit = (event) => {
@@ -27,7 +27,7 @@ const Login = () => {
         }
     }
     return (
-        <div>
+        <div style={{fontSize: 15, display: "table-caption", alignItems: "center", flexDirection: "column"}}>
             Login
             <form onSubmit={handleSubmit}>
                 <fieldset>
@@ -36,7 +36,7 @@ const Login = () => {
                 </fieldset>
                 <fieldset>
                     <legend>Password</legend>
-                    <input type="text" value={password} onChange={event => setPassword(event.target.value)}/>
+                    <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 </fieldset>
                 <button type={'submit'}>Enter</button>
             </form>

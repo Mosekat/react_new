@@ -3,11 +3,25 @@ import {MessageList} from './message-list';
 import {useParams, Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {chatsSelector} from "../redux/reducers/selectors/selectors";
+import {useDispatch} from "react-redux";
+import {logoutInitiate} from "../redux/reducers/actions";
+import {useNavigate} from "react-router-dom";
+import React from "react";
 
 
 const Home = () => {
+    const user = useSelector(state => state.auth.currentUser);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleAuth = () => {
+        if (user) {
+            dispatch(logoutInitiate())
+        }
+        setTimeout(()=>{
+            navigate('/')
+        },1000)
+    }
     let chats = useSelector(chatsSelector);
-
     let {id} = useParams();
     let arCurrent = [];
     if (typeof id === 'undefined') {
@@ -29,8 +43,8 @@ const Home = () => {
                 <header>
                     <input type="text" placeholder="search"></input>
                 </header>
+                <button onClick={handleAuth}>Exit</button>
                 <ListElements/>
-
             </aside>
             <main>
                 <header>
@@ -42,7 +56,9 @@ const Home = () => {
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt=""></img>
                 </header>
                 <MessageList chatId={id}/>
+
             </main>
+
         </div>
     );
 }

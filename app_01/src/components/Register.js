@@ -39,13 +39,14 @@ const Register = () => {
                 </fieldset>
                 <fieldset>
                     <legend>Password</legend>
-                    <input type="text" value={password} onChange={event => setPassword(event.target.value)}/>
+                    <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 </fieldset>
                 <fieldset>
                     <legend>Confirm</legend>
-                    <input type="text" value={passwordConfirm} onChange={event => setPasswordConfirm(event.target.value)}/>
+                    <input type="password" value={passwordConfirm}
+                           onChange={event => setPasswordConfirm(event.target.value)}/>
                 </fieldset>
-                <button type={'submit'}>Save</button>
+                <button type={'submit'}>SIGN IN</button>
             </form>
         </div>
     );

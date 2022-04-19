@@ -22,6 +22,17 @@ aside{
   font-size:15px;
   vertical-align:top;
 }
+.menu{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: lightskyblue;
+}
 main{
   width:490px;
   height:800px;
@@ -225,3 +236,5 @@ main footer a{
   margin-top:5px;
   display:inline-block;
 }
+
+
