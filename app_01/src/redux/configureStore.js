@@ -1,7 +1,7 @@
 import {compose, createStore} from 'redux';
 import {composeWithDevTools} from "redux-devtools-extension";
 import chatsReducer from "./reducers/chatsReduser";
-import messageListReducer from "./reducers/messageListReduser";
+import messageListReducer from "./reducers/messageListReducer";
 import {authReducer} from "./reducers/authReducer";
 import {commentsReducer} from "./reducers/commentsReducer";
 import profileReducer from "./reducers/profileReducer";

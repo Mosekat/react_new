@@ -12,7 +12,7 @@ export const MessageList = (props) => {
     const writeMessage = (event) => {
         setMessage(event.target.value);
     }
-    const addMessage = (msg) => {
+   const addMessage = (msg) => {
         if (msg) {
             dispatch({type: 'addMessage', payload: {author: 'User', text: msg, chatId: props.chatId}});
             setMessage('');
